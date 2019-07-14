@@ -1,23 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>window.requestAnimationFrame</title>
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background: blue;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -150px;
+            margin-top: -150px;
+            border-radius: 50%;
+        }
+    </style>
 </head>
+    <div class="box"></div>
 <body>
     <script>
-        var num = 500;
-        function countNum(){
-            num++;
-            if(num < 1000){
-                var res = window.requestAnimationFrame(countNum);
-                console.log(res,"res")
-            }
-            console.log(num)
+        // 1.0 获取box
+        var box = document.querySelector(".box");
+        // 2.0 事件
+        box.onclick = function(){
+            window.requestAnimationFrame(change);
         }
-       window.requestAnimationFrame(countNum);
+        function change(){
+            var option = {
+                width:"100px",
+                height:"100px",
+                marginLeft:"-50px",
+                marginTop:"-50px",
+                borderRadius:0
+            }
+            for(var k in option){
+                var step = (parseInt(option[k]) - parseInt(getComputedStyle(box,null)[k]))/10;
+                step = step < 0 ? Math.floor(step) : Math.ceil(step);
+                box.style[k] =  parseInt(getComputedStyle(box,null)[k]) + step+"px";
+                if( parseInt(option[k])!=parseInt(getComputedStyle(box,null)[k])){
+                    window.requestAnimationFrame(change);
+                }
+            }
+        }
     </script>
 </body>
+
 </html>

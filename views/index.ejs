@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端 侧栏滑动</title>
+   <link rel="stylesheet" href="/css/main.min.css">
+</head>
+
+<body>
+    <div class="layout">
+        <div class="layout-box">
+            <div class="btn-toggle">切换</div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="nav-box">
+            <div class="btn-group clearfix">
+                <div class="btn btn-register">注册</div>
+                <div class="btn btn-login">登录</div>
+            </div>
+            <ul class="nav-list">
+                <li class="active">
+                    首页
+                </li>
+                <li>
+                    深阅读
+                </li>
+                <li>
+                    浅阅读
+                </li>
+                <li>
+                    有料
+                </li>
+                <li>
+                    前哨
+                </li>
+                <li>
+                    留言板
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="/js/tool.js"></script>
+<script>
+    // 获取事件源
+    var layout = document.querySelector(".layout");
+    var toggleBtn =  document.querySelector(".btn-toggle");
+    // 调用tap方法
+    // 定义布尔值
+    var isMove = true;
+    tap(toggleBtn , function(){
+        // 书写处理逻辑
+        if(isMove){
+            // 调用animate方法
+            animate(layout , {
+                left:"200px"
+            })
+            // 
+            isMove= false;
+        }else {
+             //调用animate方法
+             animate(layout , {
+                left:"0"
+            })
+            isMove= true;
+        }
+    })
+</script>

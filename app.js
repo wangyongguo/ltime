@@ -6,6 +6,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var cookieSession = require('cookie-session');
 
 var app = express();
 var router = express.Router();
@@ -20,9 +21,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 //传输数据json处理
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ 
+	extended: false, //拓展模事
+	limit: 2 * 1024 * 1024 //限制2m
+}));
 app.use(cookieParser());
-
+app.use(cookieSession({
+	name: "sess",
+	keys: ["aaa", "bbb", "ccc"],
+	maxAge: 2 * 60 * 60 * 1000
+}))
 //路由控制
 app.use(router);
 

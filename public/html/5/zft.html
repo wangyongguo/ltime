@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,17 @@
     <title>正方体</title>
     <link rel="stylesheet" href="/css/reset.css">
     <style>
-        .container .box {
+        .layout .box {
             width: 200px;
             height: 200px;
-            /* border: 1px solid #ccc; */
             transform-style: preserve-3d;
-            transform: rotateX(0deg) rotateY(0deg);
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
             transition: all 1s;
             position: relative;
-            float: left;
+            margin: 50px auto;
         }
 
-        .container .box > div  {
+        .layout .box>div {
             width: 200px;
             height: 200px;
             opacity: 0.5;
@@ -30,47 +30,66 @@
             font-size: 100px;
             color: #fff;
         }
-        .container .box > div.first {
+
+        .layout .box>div.first {
             background-color: orange;
             transform: rotateX(90deg) translateZ(100px);
         }
-        .container .box > div.second {
+
+        .layout .box>div.second {
             background-color: blue;
             transform: rotateX(90deg) translateZ(-100px);
         }
-        .container .box > div.third {
+
+        .layout .box>div.third {
             background-color: purple;
             transform: rotateY(90deg) translateZ(100px);
         }
-        .container .box > div.fourth {
+
+        .layout .box>div.fourth {
             background-color: green;
-            transform: rotateY(90deg) translateZ(-100px);   
+            transform: rotateY(90deg) translateZ(-100px);
         }
-        .container .box > div.fifth {
+
+        .layout .box>div.fifth {
             background-color: pink;
             transform: translateZ(100px);
         }
-        .container .box > div.sixth {
+
+        .layout .box>div.sixth {
             background-color: darkred;
             transform: translateZ(-100px);
         }
 
-        .container .box:hover {
+        .layout .box:hover {
             transform: rotateX(-90deg) rotateY(0deg);
         }
     </style>
 </head>
+
 <body>
-    
-    <div class="container">
-            <div class="box">
-                    <div class="first">1</div>
-                    <div class="second">2</div>
-                    <div class="third">3</div>
-                    <div class="fourth">4</div>
-                    <div class="fifth">5</div>
-                    <div class="sixth">6</div>
-            </div>
+
+    <div class="layout">
+        <div class="box">
+            <div class="first">1</div>
+            <div class="second">2</div>
+            <div class="third">3</div>
+            <div class="fourth">4</div>
+            <div class="fifth">5</div>
+            <div class="sixth">6</div>
+        </div>
     </div>
 </body>
+
 </html>
+
+<script>
+    // 1.0 获取元素
+    var box = document.querySelector(".box");
+    //2.0 监听手机晃动事件   deviceorientation
+    window.addEventListener('deviceorientation', function (evt) {
+        // 3.0 设置角度   beta === x   gamma === y   alpha === z
+        box.style.transform = 'rotateX('+(evt.beta+'deg) rotateY('+(evt.gamma+'deg) rotateZ('+(evt.alpha+'deg)';
+
+    })
+</script>
