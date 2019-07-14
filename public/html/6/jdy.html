@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>筋斗云</title>
+
+    <style>
+        ol , ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+        }
+        ul {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            float: left;
+        }
+        ul > li {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        ol {
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+        ol > li {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            display: none;
+        }
+     
+
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li class="left">
+
+        </li>
+    </ul>
+    <ol>
+        <li class="right"></li>
+    </ol>
+
+
+    
+</body>
+</html>
+
+<script>
+    var left = document.querySelector(".left");
+    var right = document.querySelector(".right");
+    left.onmouseenter = right.onmouseenter = function(){
+        right.style.display="block";
+    }
+    left.onmouseleave = right.onmouseleave = function(){
+        right.style.display="none";
+    }
+
+</script>

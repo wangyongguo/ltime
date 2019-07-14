@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户管理</title>
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/user.min.css">
+</head>
+
+<body>
+    <div class="tt_user_layout">
+        <header class="tt_user_header">
+            <div class="container">
+                <h1>欢迎进入后台管理页面</h1>
+            </div>
+        </header>
+        <section class="tt_user_list">
+            <div class="container">
+                <ul>
+                    <li>
+                       <div class="number"><span class="fa fa-star-o"> 序号 </span></div>
+                       <div class="name">账号</div>
+                       <div class="tel">号码</div>
+                       <div class="email">邮箱</div>
+                       <div class="img">头像</div>
+                       <div class="title">个性签名</div>
+                       <div class="edit">编辑</div>
+                    </li>
+                </ul>
+                <% for(var i = 0  ; i < data.length; i ++){%>
+                    <ul>
+                        <li>
+                            <div class="number"><%=i%> </span></div>
+                            <div class="name"> <%=data[i].name%> </div>
+                            <div class="tel"> <%=data[i].phone%> </div>
+                            <div class="email"> <%=data[i].email%> </div>
+                            <div class="img"> <%=data[i].src%> </div>
+                            <div class="title"> <%=data[i].coin%> </div>
+                            <div class="edit">
+                                <a href="javascript:;">删除</a>
+                                <a href="javascript:;">修改</a>
+                            </div>
+                        </li>
+                    </ul>
+                <%}%>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

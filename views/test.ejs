@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试</title>
+</head>
+
+<body>
+    <h3>测试页面</h3>
+    <p><%=title%></p>
+    <div>
+        <input type="text" class="inp" placeholder="is she xiaohong??"><button class="btn">发送</button>
+    </div>
+    <span class="text"></span>
+</body>
+
+</html>
+
+<script src="/libs/jquery/jquery.js"></script>
+<script>
+    $(function () {
+        $(".btn").click(() => {
+            var v1 = $(".inp").val();
+            $.ajax({
+                url: "/test/login",
+                type: "post",
+                data:{
+                    name:v1
+                },
+                success: function (data) {
+                    // console.log(data)
+                    if(data.code=="0"){
+                        $(".text").css("color","green");
+                    }else {
+                        $(".text").css("color","red");
+                    }
+
+                    $(".text").text(data.message);
+                    
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            })
+
+            $(".inp").val("");
+        })
+    })
+</script>

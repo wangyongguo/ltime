@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正方体</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <style>
+        .container .box {
+            width: 200px;
+            height: 200px;
+            /* border: 1px solid #ccc; */
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg);
+            transition: all 1s;
+            position: relative;
+            float: left;
+        }
+
+        .container .box > div  {
+            width: 200px;
+            height: 200px;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            line-height: 200px;
+            font-size: 100px;
+            color: #fff;
+        }
+        .container .box > div.first {
+            background-color: orange;
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .container .box > div.second {
+            background-color: blue;
+            transform: rotateX(90deg) translateZ(-100px);
+        }
+        .container .box > div.third {
+            background-color: purple;
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        .container .box > div.fourth {
+            background-color: green;
+            transform: rotateY(90deg) translateZ(-100px);   
+        }
+        .container .box > div.fifth {
+            background-color: pink;
+            transform: translateZ(100px);
+        }
+        .container .box > div.sixth {
+            background-color: darkred;
+            transform: translateZ(-100px);
+        }
+
+        .container .box:hover {
+            transform: rotateX(-90deg) rotateY(0deg);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+            <div class="box">
+                    <div class="first">1</div>
+                    <div class="second">2</div>
+                    <div class="third">3</div>
+                    <div class="fourth">4</div>
+                    <div class="fifth">5</div>
+                    <div class="sixth">6</div>
+            </div>
+    </div>
+</body>
+</html>

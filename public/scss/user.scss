@@ -1,0 +1,45 @@
+$mainColor : #f0f0f0;
+
+.tt_user_layout {
+   width: 100%;
+}
+
+.tt_user_header {
+    width: 100%;
+    .container {
+        h1 {
+            width: 100%;
+            height: 80px;
+            background-color:$mainColor ;
+            text-align: center;
+            line-height: 80px;
+        }
+    }
+}
+
+.tt_user_list {
+    .container {
+        ul {
+            width: 100%;
+            li {
+                height: 50px;
+                line-height: 50px;
+                border-bottom: 1px solid $mainColor ;
+                border-left: 1px solid $mainColor;
+                border-right: 1px solid $mainColor;
+                cursor: pointer;
+                display: flex;
+                > div {
+                    width: 140px;
+                    height: 50px;
+                    text-align: center;
+                    border-right: 1px solid $mainColor;
+                    &:last-child {
+                        flex: auto;
+                        border-right: 1px solid transparent;
+                    }
+                }
+            }
+        }
+    }
+}
