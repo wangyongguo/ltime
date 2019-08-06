@@ -1,13 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>登录</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="./lr.css">
 </head>
+
 <body>
-    
+    <div class="layout">
+        <div class="container">
+            <section class="bb_box">
+                <div class="form">
+                    <h3>用户登录</h3>
+                    <div class="item">
+                        <input type="text" placeholder="输入账号">
+                    </div>
+                    <div class="item">
+                        <input type="password" placeholder="输入密码">
+                    </div>
+                    <div class="item flex code">
+                        <input type="text" placeholder="验证码">
+                        <div class="img"><img src="http://ohmycode.cn:63521/code" alt=""></div>
+                    </div>
+                    <div class="item opa">
+                        <input type="submit" value="登录">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
 </body>
+
 </html>
+<script src="/js/tool.js"></script>
+<script src="/libs/jquery/jquery.js"></script>
+<script>
+    var f = new Caipin();
+    f.move(document.querySelector('.form h3'));
+</script>
+<script>
+
+    $(function(){
+        $(".item:last-child input[type='submit']").click(function(){
+            var v1 = $(".form .item input[type='text']").val();
+            var v2 = $(".form .item input[type='password']").val();
+            var v3 = $(".form .item.code input[type='text']").val();
+            console.log(v1,v2,v3)
+            if(v1 == undefined || v2 == undefined || v3 == undefined){
+                return;
+            }
+            $.ajax({
+                url:"http://127.0.0.1:63521/user/login",
+                type:"post",
+                data:{
+                    tel:v1,
+                    pass:v2,
+                    code:v3
+                },
+                success:function(data){
+                    console.log(data)
+                },
+                error:function(err){
+                    console.log(err)
+                }
+            })
+        })
+    })
+
+</script>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>波浪线</title>
+    <link rel="shortcut icon"  type="images/x-icon" href="/favicon.ico">
+    <style>
+       html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas"></canvas>
+
+</body>
+
+</html>
+<script>
+    // 1.0 获取canvas元素
+    var canvas = document.getElementById('canvas');
+    // 2.0 获取canvas上下文对象
+    var ctx = canvas.getContext('2d');
+    // 3.0 设置画布宽高 , 并定义变量记录下
+    var width = canvas.width = canvas.parentNode.offsetWidth;
+    var height = canvas.height = canvas.parentNode.offsetHeight;
+    //4.0.1 填充颜色
+    ctx.fillStyle = "rgba(0,222,255, 0.2)";
+    //4.0.2 开始绘制路径
+    ctx.beginPath();
+    //4.0.3 左上角
+    ctx.moveTo(0, canvas.height / 2);
+    //4.0.4 右上角
+    ctx.lineTo(canvas.width, canvas.height / 2);
+    //4.0.5右下角
+    ctx.lineTo(canvas.width, canvas.height);
+    //4.0.6左下角
+    ctx.lineTo(0, canvas.height);
+    //4.0.7左上角
+    ctx.lineTo(0, canvas.height / 2);
+    //4.0.8闭合路径
+    ctx.closePath();
+    //4.0.9填充路径
+    ctx.fill();
+    //5.0判断当前浏览器是否支持 requestAnimFrame 封装一个方法requestAnimFrame 兼容
+    window.requestAnimFrame = (function () {
+        return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 1000 / 60);
+            };
+    })();
+    //6.0 初始角度为0
+    var step = 0;
+
+    // 7.0 调用
+    loop();
+    function loop() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = "rgba(0,222,255, 0.2)";
+        //角度增加一度
+        step++;
+        //角度转换成弧度
+        var angle = step * Math.PI / 180;
+        //矩形高度的变化量
+        var speedHeight = Math.sin(angle) * 50;
+        //矩形高度的变化量(右上顶点)
+        var speedHeightRight = Math.cos(angle) * 50;
+        ctx.beginPath();
+        ctx.moveTo(0, height / 2 + speedHeight);
+        //右上顶点
+        ctx.lineTo(width,height / 2 + speedHeightRight);
+        ctx.lineTo(width, height);
+        ctx.lineTo(0, height);
+        ctx.lineTo(0, height / 2 + speedHeight);
+        ctx.closePath();
+        ctx.fill();
+        requestAnimFrame(loop);
+    }
+
+</script>

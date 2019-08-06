@@ -1,0 +1,72 @@
+@mainColor:rgb(0,22,255,0.5);
+.layout {
+    width: 100%;
+}
+
+.container {
+    .bb_box {
+        .form {
+            width: 500px;
+            padding: 0 0  15px 0;
+            background-color: @mainColor;
+            position: absolute;
+            top: 150px;
+            left: 200px;
+            h3 {
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                background-color: rgba(0,0,0,0.2);
+                color: #fff;
+                cursor: move;
+                padding: 0 0 0 15px;
+                box-sizing: border-box;
+            }
+            div {
+                width: 500px;
+                padding: 0 15px;
+                box-sizing: border-box;
+                input {
+                    border: 0;
+                    padding: 0;
+                    font-size: 14px;
+                    outline: none;
+                    padding: 0 0 0 15px;
+                    box-sizing: border-box;
+                }
+                input[type='text'],input[type='password']{
+                    width: 100%;
+                    height: 40px;
+                    border-bottom: 1px solid #ccc;
+                }
+                input[type='submit'] {
+                    width: 100%;
+                    height: 40px;
+                    background-color: rgba(0,0,0,0.6);
+                    cursor: pointer;
+                }
+                .img {
+                    background-color: #fff;
+                    vertical-align: middle;
+                    border: 0;
+                    width: 140px;
+                    height: 40px;
+                    border-bottom: 1px solid #ccc;
+                    background-color: #fff;
+                    overflow: hidden;
+                    border-left: 1px solid #ccc;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+            
+            div.flex{
+               display: flex;
+            }
+            div.opa {
+                border-bottom: 1px solid #ccc;
+            }
+        }
+    }
+}

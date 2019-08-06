@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>波浪线</title>
+    <link rel="shortcut icon"  type="images/x-icon" href="/favicon.ico">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas"></canvas>
+
+</body>
+
+</html>
+<script>
+    // 1.0 获取canvas元素
+    var canvas = document.getElementById('canvas');
+    // 2.0 获取canvas上下文对象
+    var ctx = canvas.getContext('2d');
+    // 3.0 设置画布宽高 , 并定义变量记录下
+    var width = canvas.width = canvas.parentNode.offsetWidth;
+    var height = canvas.height = canvas.parentNode.offsetHeight;
+    //5.0判断当前浏览器是否支持 requestAnimFrame 封装一个方法requestAnimFrame 兼容
+    var timer = setInterval(function(){
+        loop();
+    },30)
+    //6.0 初始角度为0
+    var step = 0;
+    // 7.0 调用
+    var lines = ["rgba(0,222,255, 0.2)", "rgba(157,192,249, 0.2)", "rgba(0,168,255, 0.2)"];
+    function loop() {
+        ctx.clearRect(0, 0, width, height);
+        step ++;
+        //画3个不同颜色的矩形
+        for (var j = lines.length - 1; j >= 0; j--) {
+            ctx.fillStyle = lines[j];
+            //每个矩形的角度都不同，每个之间相差45度
+            var angle = (step + j * 45) * Math.PI / 180;
+            var speedHeight = Math.sin(angle) * 50;
+            var speedHeightRight = Math.cos(angle) * 50;
+            ctx.beginPath();
+            ctx.moveTo(0, height / 2 + speedHeight);
+             //画曲线
+            ctx.bezierCurveTo(
+                width / 2, height / 2 + speedHeight - 50,
+                width / 2, height / 2 + speedHeightRight - 50,
+                width, height / 2 + speedHeightRight);
+                
+            ctx.lineTo(width, height);
+            ctx.lineTo(0, height);
+            ctx.lineTo(0, height / 2 + speedHeight);
+            ctx.closePath();
+            ctx.fill();
+        }
+    }
+
+</script>

@@ -26,6 +26,7 @@ module.exports = {
     post_login:function(req,res){
         userModel.loginUser(req,res,function(err,result){
             
+            res.send(result);
         });
     },
     post_register:function(req,res){

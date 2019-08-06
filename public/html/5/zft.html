@@ -89,7 +89,49 @@
     //2.0 监听手机晃动事件   deviceorientation
     window.addEventListener('deviceorientation', function (evt) {
         // 3.0 设置角度   beta === x   gamma === y   alpha === z
-        box.style.transform = 'rotateX('+(evt.beta+'deg) rotateY('+(evt.gamma+'deg) rotateZ('+(evt.alpha+'deg)';
+        box.style.transform = 'rotateX(' + evt.beta + 'deg) rotateY(' + evt.gamma + 'deg) rotateZ(' + evt.alpha + 'deg)';
 
     })
+
+    Array.prototype.findMostCount = function(){
+        var o = {}
+        var result = null;
+        for(var i = 0 ; i < this.length ; i++){
+            if(o[this[i]] == undefined){
+                var ele = [];
+                ele.push(this[i]);
+                o[this[i]] = {
+                    count:1,
+                    newArray:ele
+                }
+            }else {
+                o[this[i]].count++;
+                o[this[i]].newArray.push(this[i]);
+            }
+            result = this.findMostEle(o);
+        }
+
+        return  result;
+    }
+    Array.prototype.findMostEle = function(obj){
+        var mostCount = 0;
+        var newArr = [];
+        for(var k  in obj){
+            if (mostCount <= obj[k].count) {
+                mostCount = obj[k].count;
+                newArr.push(obj[k])
+            }
+        }
+        return newArr;
+    }
+
+
+    var arr = ['a', 'b', 'c', 'b', 'a', 'o'];
+
+    var res = arr.findMostCount();
+    console.log(res)
+
+
+
+
 </script>

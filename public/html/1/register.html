@@ -6,8 +6,38 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>注册</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="./lr.css">
 </head>
 <body>
-    
+    <div class="layout">
+        <div class="container">
+            <section class="bb_box">
+                <div class="form">
+                    <h3>免费注册</h3>
+                    <div>
+                        <input type="text" placeholder="输入手机号码">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="输入密码">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="确认密码">
+                    </div>
+                    <div class="flex">
+                       <input type="text" placeholder="验证码"><div class="img"><img src="http://ohmycode.cn:63521/code" alt=""></div>
+                    </div>
+                    <div class="opa">
+                        <input type="submit" value="立即注册">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 </body>
 </html>
+<script src="/js/tool.js"></script>
+<script>
+    var f = new Caipin();
+    f.move(document.querySelector('.form h3'));
+</script>

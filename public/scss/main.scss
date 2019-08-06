@@ -2,7 +2,7 @@ html ,
 body ,
 ul {
     padding: 0;
-    margin: 0;
+    margin: 0;  
 }
 body {
     font-family: "微软雅黑";
@@ -16,7 +16,11 @@ ul {
     display: block;
     clear: both;
 }
-
+html ,
+body {
+    width: 100%;
+    overflow: hidden;
+}
 .layout {
     width: 100%;
     position: absolute;

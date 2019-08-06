@@ -11,6 +11,10 @@ var cookieSession = require('cookie-session');
 var app = express();
 var router = express.Router();
 
+router.get('/',function(req,res){
+	res.render('index',{});
+})
+
 //视图加载
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
